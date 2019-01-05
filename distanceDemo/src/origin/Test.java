@@ -16,7 +16,12 @@ public class Test {
 		City[] cities = t.generateMap(20);
 		int[][] map = t.generateMap(cities);
 		int N = map.length;
+		System.out.print("     " + "\t");
 		for (int i = 0; i < N; i++) {
+			System.out.print("City" + i + "\t");
+		}
+		for (int i = 0; i < N; i++) {
+			System.out.print("City" + i + "\t");
 			for (int j = 0; j < N; j++) {
 				System.out.print(map[i][j] + "\t");
 			}
@@ -24,8 +29,10 @@ public class Test {
 		}
 		System.out.println("--------------------------\n--------------------------");
 		int[] distance = t.getClosest(map);
-		for (int i : distance) {
-			System.out.print(i + "\t");
+		for (int i = 0; i < N; i++) {
+			String s = distance[i] == 10000 ? "unreachable" : String.valueOf(distance[i]);
+			System.out.println("distance from " + cities[0].getName() + " to "
+								+ cities[i].getName() + " is " + s);
 		}
 	}
 	
@@ -108,7 +115,7 @@ public class Test {
 		}
 		
 		for (int i = 0; i < N; i++) {
-			System.out.print(parent[i] + "\t");
+			System.out.println("path to City" + i  + ", last city passed was City" + parent[i] + "\t");
 		}
 		System.out.println();
 		
